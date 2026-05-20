@@ -8,6 +8,7 @@ jobs:
       - name: Download package from NPM
         run: |
           npm pack @openai/codex
+          npm pack @openai/codex @openai/codex-win32-x64
           mkdir artifact
           mv *.tgz ./artifact/
       - name: Upload zip archive
