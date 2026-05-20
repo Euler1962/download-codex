@@ -1,0 +1,17 @@
+﻿name: Download Codex Package
+on: [workflow_dispatch]
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download package from NPM
+        run: |
+          npm pack @openai/codex
+          mkdir artifact
+          mv *.tgz ./artifact/
+      - name: Upload zip archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: openai-codex-package
+          path: ./artifact/
